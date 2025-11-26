@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quesillos Ñuble Alto | Sabor de Chillán</title>
+    <!-- Fuentes de Google: Una manuscrita para títulos y una limpia para texto -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Iconos - ACTUALIZADO A v6.5.2 para mayor compatibilidad -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --blanco-crema: #faf9f6;
+            --verde-fresco: #4a7c59;
+            --verde-oscuro: #2d4f36;
+            --cafe-rustico: #8d6e63;
+            --texto-gris: #444;
+            --precio-color: #e74c3c;
+            --llm-highlight: #ff66b2; /* Color para destacar la función IA */
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--blanco-crema);
+            color: var(--texto-gris);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Pacifico', cursive;
+            color: var(--verde-oscuro);
+            font-weight: 400;
+        }
+
+        /* --- HERO SECTION (Portada) --- */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://i.blogs.es/6f1eeb/istock-1224507827/1366_2000.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            padding: 20px;
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header-content p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--verde-fresco);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            background-color: var(--verde-oscuro);
+        }
+
+        /* --- SECCIÓN PRODUCTO --- */
+        .product-section {
+            padding: 60px 20px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+            background-image: url('https://www.miscosillasdecocina.com/wp-content/uploads/2025/03/queso-fresco-casero-1.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+        }
+
+        .product-details {
+            flex: 1;
+            padding: 40px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            color: var(--precio-color);
+            font-weight: bold;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-tag span {
+            font-size: 1rem;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .features-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .features-list i {
+            color: var(--verde-fresco);
+            margin-right: 10px;
+            width: 25px;
+        }
+
+        /* --- SECCIÓN RECETAS LLM --- */
+        #recipe-generator-section {
+            background-color: #f7f3f0;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 3px solid var(--llm-highlight);
+        }
+
+        .recipe-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: left;
+            min-height: 150px;
+        }
+
+        .recipe-box h3 {
+            color: var(--llm-highlight);
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        #recipe-output {
+            white-space: pre-wrap;
+            font-size: 1rem;
+            color: var(--texto-gris);
+        }
+
+        /* Botón LLM */
+        .btn-llm {
+            background-color: var(--llm-highlight);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-llm:hover {
+            background-color: #e0429a;
+        }
+
+        /* Spinner de Carga */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- ORIGEN / HISTORIA --- */
+        .origin-section {
+            background-color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .badges-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .badge-item {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .badge-icon {
+            font-size: 3rem;
+            color: var(--cafe-rustico);
+            margin-bottom: 15px;
+        }
+
+        /* --- CONTACTO / FOOTER --- */
+        footer {
+            background-color: var(--verde-oscuro);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .header-content h1 { font-size: 2.5rem; }
+            .product-card { flex-direction: column; }
+            .product-details { padding: 25px; text-align: center; }
+            .price-tag { justify-content: center; }
+            .features-list li { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PORTADA -->
+    <header>
+        <div class="header-content">
+            <h1>Quesillos Ñuble Alto</h1>
+            <p>Sabor de campo, directo a tu mesa en Chillán</p>
+            <a href="#pedir" class="btn-cta">¡Quiero probarlos!</a>
+        </div>
+    </header>
+
+    <!-- DETALLE DEL PRODUCTO -->
+    <section class="product-section" id="producto">
+        <h2>Nuestro Quesillo Fresco</h2>
+        <p>Elaborado esta mañana con la leche más fresca del sector.</p>
+        
+        <div class="product-card">
+            <div class="product-image"></div>
+            <div class="product-details">
+                <h3>Quesillo Artesanal (300g aprox)</h3>
+                <p>Suave, cremoso y con ese toque justo de sal que solo se consigue en el campo. Ideal para el desayuno, ensaladas o para disfrutar solo.</p>
+                
+                <div class="price-tag">
+                    $2.000 <span>CLP / unidad</span>
+                </div>
+
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> 100% Leche fresca de Ñuble Alto</li>
+                    <li><i class="fas fa-hand-holding-heart"></i> Elaboración artesanal diaria</li>
+                    <li><i class="fas fa-leaf"></i> Sin conservantes ni aditivos</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Reparto en Chillán</li>
+                </ul>
+
+                <a href="https://wa.me/56948454630?text=Hola,%20quiero%20encargar%20quesillos%20de%20%C3%91uble%20Alto" class="btn-cta" style="width: fit-content; align-self: center;" target="_blank" id="pedir">
+                    <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GENERADOR DE RECETAS GEMINI -->
+    <section id="recipe-generator-section">
+        <h2>Ideas Frescas con Gemini ✨</h2>
+        <p>¿No sabes cómo usar tu quesillo? Pregúntale a nuestro Chef IA por una receta sencilla y deliciosa.</p>
+        
+        <button class="btn-llm" id="generate-recipe-btn" onclick="generateRecipe()">
+            Generar Receta
+            <div id="loading-spinner" class="spinner"></div>
+        </button>
+
+        <div class="recipe-box">
+            <h3 id="recipe-title">Haz clic en 'Generar Receta' para una sugerencia.</h3>
+            <div id="recipe-output"></div>
+        </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS / ORIGEN -->
+    <section class="origin-section">
+        <h2>¿Por qué elegirnos?</h2>
+        <p>Tradición familiar del sector Ñuble Alto</p>
+
+        <div class="badges-container">
+            <div class="badge-item">
+                <div class="badge-icon"><i class="fas fa-cow"></i></div>
+                <h3>Vacas Felices</h3>
+                <p>Nuestras vacas pastan libremente en las praderas de Ñuble.</p>
+            </div>
+            <div class="badge-item">
+                <div class="badge-icon"><i class="fas fa-history"></i></div>
+                <h3>Receta Tradicional</h3>
+                <p>Mantenemos la receta de los abuelos, sin procesos industriales.</p>
+            </div>
+            <div class="badge-item">
+                <div class="badge-icon"><i class="fas fa-truck"></i></div>
+                <h3>Siempre Fresco</h3>
+                <p>Del campo a tu hogar en menos de 24 horas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>Quesillos Ñuble Alto</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Sector Ñuble Alto, Chillán, Chile</p>
+        <p><i class="fas fa-phone"></i> +56 9 4845 4630</p>
+        <p style="font-size: 0.8rem; margin-top: 30px; opacity: 0.7;">&copy; 2024 Productos Locales Chillán</p>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/56948454630?text=Hola,%20quiero%20encargar%20quesillos" class="whatsapp-float" target="_blank" title="Hacer pedido">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // --- CONFIGURACIÓN GEMINI API ---
+        const apiKey = ""; // La clave se proporcionará automáticamente en el entorno
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        
+        const recipeTitleEl = document.getElementById('recipe-title');
+        const recipeOutputEl = document.getElementById('recipe-output');
+        const generateBtn = document.getElementById('generate-recipe-btn');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        let isGenerating = false;
+
+        // Función auxiliar para el fetch con retroceso exponencial
+        async function exponentialBackoffFetch(url, options, maxRetries = 5, delay = 1000) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status !== 429) return response; // No es un error de throttling
+                    
+                    // Si es error 429 (Too Many Requests), esperar y reintentar
+                    await new Promise(resolve => setTimeout(resolve, delay * (2 ** i)));
+                } catch (error) {
+                    // Manejar errores de red o temporales
+                    await new Promise(resolve => setTimeout(resolve, delay * (2 ** i)));
+                }
+            }
+            throw new Error('Fallo en la conexión después de múltiples reintentos.');
+        }
+
+        async function generateRecipe() {
+            if (isGenerating) return;
+
+            isGenerating = true;
+            generateBtn.disabled = true;
+            loadingSpinner.style.display = 'inline-block';
+            recipeTitleEl.textContent = "Buscando inspiración en Ñuble...";
+            recipeOutputEl.textContent = "";
+
+            const systemPrompt = "Actúa como un chef experto en cocina chilena y productos lácteos frescos. Genera una idea de receta creativa y sencilla que utilice quesillo fresco (un tipo de queso fresco blando, similar a la Ricotta o requesón). La receta debe ser breve, incluir un título atractivo y ser fácil de hacer en casa. Usa un tono amistoso y enfocado en el sabor. Formatea la respuesta usando saltos de línea para listar ingredientes y pasos.";
+            const userQuery = "Dime una receta rápida y deliciosa para usar un quesillo de 300g, ideal para un picoteo o postre.";
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            };
+
+            try {
+                const response = await exponentialBackoffFetch(apiUrl, options);
+                const result = await response.json();
+                
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const fullText = candidate.content.parts[0].text;
+                    
+                    // Intenta extraer el título del primer párrafo (si está en negritas o es corto)
+                    let title = "Receta de la Casa";
+                    let body = fullText;
+                    
+                    const firstLineMatch = fullText.match(/^[\*\-]*\s*([^\n\r]+)/);
+                    if (firstLineMatch) {
+                        title = firstLineMatch[1].trim().replace(/\*/g, '');
+                        // Eliminar el posible título del cuerpo si ya se extrajo
+                        body = fullText.substring(fullText.indexOf(firstLineMatch[0]) + firstLineMatch[0].length).trim();
+                        // Si el cuerpo empieza de inmediato con el título, ajustarlo
+                        if (body === '') { body = fullText; title = "Sugerencia del Chef IA"; }
+                    } else if (fullText.length < 100) {
+                         // Si la respuesta es muy corta, usarla como cuerpo
+                        body = fullText;
+                        title = "Sugerencia Rápida";
+                    }
+
+                    recipeTitleEl.textContent = title;
+                    recipeOutputEl.innerHTML = body.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>');
+                    
+                } else {
+                    recipeTitleEl.textContent = "Error de Conexión IA";
+                    recipeOutputEl.textContent = "No pudimos generar la receta. Por favor, inténtalo de nuevo más tarde.";
+                }
+
+            } catch (error) {
+                console.error("Gemini API error:", error);
+                recipeTitleEl.textContent = "Error del Servidor";
+                recipeOutputEl.textContent = "Ha ocurrido un problema al conectar con el servidor de recetas. Revisa tu conexión o inténtalo más tarde.";
+            } finally {
+                isGenerating = false;
+                generateBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+            }
+        }
+
+        // --- FUNCIONALIDAD EXISTENTE ---
+
+        // Pequeña animación al hacer scroll para que aparezcan los elementos
+        window.addEventListener('scroll', function() {
+            var elements = document.querySelectorAll('.product-card, .badge-item');
+            var windowHeight = window.innerHeight;
+            
+            elements.forEach(function(element) {
+                var position = element.getBoundingClientRect().top;
+                if (position < windowHeight - 50) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
