@@ -377,21 +377,4 @@
     </a>
 
    
-        // --- FUNCIONALIDAD EXISTENTE ---
-
-        // Pequeña animación al hacer scroll para que aparezcan los elementos
-        window.addEventListener('scroll', function() {
-            var elements = document.querySelectorAll('.product-card, .badge-item');
-            var windowHeight = window.innerHeight;
-            
-            elements.forEach(function(element) {
-                var position = element.getBoundingClientRect().top;
-                if (position < windowHeight - 50) {
-                    element.style.opacity = "1";
-                    element.style.transform = "translateY(0)";
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+       
